@@ -34,7 +34,7 @@ std::shared_ptr<WheelItem> WheelItemFactory::MakeWheelItemFromMenuHovered()
 			if (!invEntry) {
 				return nullptr;
 			}
-			RE::TESBoundObject* boundObj = invEntry->GetObject__();
+			RE::TESBoundObject* boundObj = invEntry->GetObject();
 			if (!boundObj) {
 				return nullptr;
 			}

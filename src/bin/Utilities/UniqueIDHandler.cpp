@@ -11,7 +11,7 @@ void UniqueIDHandler::EnsureXListUniquenessInPcInventory()
 		for (auto& [boundObj, data] : inv) {
 			auto rawCount = data.first;
 			auto& entryData = data.second;
-			auto ft = entryData.get()->GetObject__()->GetFormType();
+			auto ft = entryData.get()->GetObject()->GetFormType();
 			if (ft != RE::FormType::Armor && ft != RE::FormType::Weapon) {
 				continue;
 			}
@@ -24,7 +24,7 @@ void UniqueIDHandler::EnsureXListUniquenessInPcInventory()
 							EnsureXListUniqueness(xList);
 						} catch (std::exception exception) {
 							logger::error("Error occured when ensuring extraDataList uniqueness: {}, item: {}",
-								exception.what(), entryData->GetObject__() ? entryData->GetObject__()->GetName() : "unknown");
+								exception.what(), entryData->GetObject() ? entryData->GetObject()->GetName() : "unknown");
 						}
 					}
 				}

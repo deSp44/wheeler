@@ -144,7 +144,7 @@ namespace Utils
 			bool lhsEquipped = false, rhsEquipped = false;
 			bool lhsEquippedBase = false, rhsEquippedBase = false;
 			RE::InventoryEntryData* lhs = a_actor->GetEquippedEntryData(true);
-			if (lhs && lhs->GetObject__() && lhs->GetObject__()->GetFormID() == a_weapon->GetFormID()) {
+			if (lhs && lhs->GetObject() && lhs->GetObject()->GetFormID() == a_weapon->GetFormID()) {
 				if (lhs->extraLists) {
 					for (auto* extraList : *lhs->extraLists) {
 						if (!extraList->HasType(RE::ExtraDataType::kEnchantment) 
@@ -161,7 +161,7 @@ namespace Utils
 				}
 			}
 			auto rhs = a_actor->GetEquippedEntryData(false);
-			if (rhs && rhs->GetObject__() && rhs->GetObject__()->GetFormID() == a_weapon->GetFormID()) {
+			if (rhs && rhs->GetObject() && rhs->GetObject()->GetFormID() == a_weapon->GetFormID()) {
 				if (rhs->extraLists) {
 					for (auto* extraList : *rhs->extraLists) {
 						if (!extraList->HasType(RE::ExtraDataType::kEnchantment) 

@@ -61,7 +61,7 @@ void Wheel::Draw(ImVec2 a_wheelCenter, float a_cursorAngle, bool a_cursorCentere
 					}
 				}
 				if (updatedActiveEntry) {
-					RE::PlaySoundRE(Config::Sound::SD_ENTRYSWITCH);
+					RE::PlaySound(Config::Sound::SD_ENTRYSWITCH);
 				}
 				hovered = _hoveredEntryIdx == entryIdx;
 			}

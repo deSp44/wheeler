@@ -34,7 +34,7 @@ WheelItemAlchemy::WheelItemAlchemy(RE::AlchemyItem* a_alchemyItem)
 			break;
 		case RE::ActorValue::kStamina:
 		case RE::ActorValue::kStaminaRateMult:
-		case RE::ActorValue::KStaminaRate:
+		case RE::ActorValue::kStaminaRate:
 			iconType = Texture::icon_image_type::potion_stamina;
 			break;
 		case RE::ActorValue::kMagicka:
