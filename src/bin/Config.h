@@ -56,6 +56,9 @@ namespace Config
 			inline uint32_t moveEntryBack = 208;      // down arrow
 			inline uint32_t moveWheelForward = 205;   // right arrow
 			inline uint32_t moveWheelBack = 203;      // left arrow
+
+			inline uint32_t toggleWheelIfInInventory = 0;  // unmapped
+			inline uint32_t toggleWheelIfNotInInventory = 0; // unmapped
 		}
 	}
 	namespace Sound
