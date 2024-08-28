@@ -75,7 +75,9 @@ namespace Config
 		{
 			// radius that bounds the mouse cursor. Increases with each entry in wheel to make sure MKB users don't rotate the cursor too fast.
 			inline float CursorRadiusPerEntry = 10.f;
-			inline bool DoubleActivateDisable = true;
+
+			// Prevent unequipping shouts/powers with Mouse1 and equipping them with Mouse2
+			inline bool DoubleActivateDisable = false;
 			
 			// if the user presses longer than this(without sending close), the wheel will close on release
 			// the the user presses shorter than this, the wheel will close on a second press.

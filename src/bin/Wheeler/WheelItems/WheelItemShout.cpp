@@ -59,7 +59,9 @@ void WheelItemShout::ActivateItemSecondary()
 	if (selectedPower && selectedPower->GetFormID() == this->_shout->GetFormID()) {
 		aeMan->UnequipShout(pc, this->_shout);
 	} else {
-		aeMan->EquipShout(pc, this->_shout);
+		if (!Config::Control::Wheel::DoubleActivateDisable) {
+			aeMan->EquipShout(pc, this->_shout);
+		}
 	}
 }
 
@@ -75,7 +77,9 @@ void WheelItemShout::ActivateItemPrimary()
 	}
 	RE::TESForm* selectedPower = pc->GetActorRuntimeData().selectedPower;
 	if (selectedPower && selectedPower->GetFormID() == this->_shout->GetFormID()) {
-		aeMan->UnequipShout(pc, this->_shout);
+		if (!Config::Control::Wheel::DoubleActivateDisable) {
+			aeMan->UnequipShout(pc, this->_shout);
+		}
 	} else {
 		aeMan->EquipShout(pc, this->_shout);
 	}
