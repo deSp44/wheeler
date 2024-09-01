@@ -24,6 +24,12 @@ void Wheeler::Update(float a_deltaTime)
 	if (!RE::PlayerCharacter::GetSingleton() || !RE::PlayerCharacter::GetSingleton()->Is3DLoaded()) {
 		return;
 	}
+
+	// First, delete invalid items from the wheel.
+	for (const auto& wheel: _wheels) {
+		wheel->RemoveInvalidItems();
+	}
+
 	// begin draw
 	auto ui = RE::UI::GetSingleton();
 	if (!ui) {
@@ -596,6 +602,11 @@ void Wheeler::SerializeFromJsonObj(const nlohmann::json& j_wheeler, SKSE::Serial
 
 void Wheeler::SerializeIntoJsonObj(nlohmann::json& j_wheeler)
 {
+	// First, delete invalid items from the wheel.
+	for (const auto& wheel: _wheels) {
+		wheel->RemoveInvalidItems();
+	}
+
 	j_wheeler["wheels"] = nlohmann::json::array();
 	for (const std::unique_ptr<Wheel>& wheel : _wheels) {
 		nlohmann::json j_wheel;

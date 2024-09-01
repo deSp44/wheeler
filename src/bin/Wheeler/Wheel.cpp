@@ -265,3 +265,10 @@ int Wheel::GetNumEntries()
 {
 	return this->_entries.size();
 }
+
+void Wheel::RemoveInvalidItems()
+{
+	for (const auto& entry: this->_entries) {
+		entry->RemoveInvalidItems();
+	}
+}

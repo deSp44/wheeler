@@ -8,7 +8,9 @@ public:
 	WheelItemAlchemy(RE::AlchemyItem* a_alchemyItem);
 	
 	~WheelItemAlchemy(){};
-	
+
+	virtual bool IsItemValid();
+
 	virtual void DrawSlot(ImVec2 a_center, bool a_hovered, RE::TESObjectREFR::InventoryItemMap& a_imap, DrawArgs a_drawArgs) override;
 	virtual void DrawHighlight(ImVec2 a_center, RE::TESObjectREFR::InventoryItemMap& a_imap, DrawArgs a_drawArgs) override;
 	
@@ -32,6 +34,7 @@ private:
 		kNone
 	};
 	RE::AlchemyItem* _alchemyItem = nullptr;
+	RE::FormID _formID = 0;
 	WheelItemAlchemyType _alchemyItemType = WheelItemAlchemyType::kNone;
 
 	void consume();

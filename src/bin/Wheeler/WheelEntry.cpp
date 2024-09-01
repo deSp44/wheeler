@@ -329,3 +329,19 @@ void WheelEntry::SetSelectedItem(int a_selected)
 	this->_selectedItem = a_selected;
 }
 
+void WheelEntry::RemoveInvalidItems()
+{
+	for (int i = 0; i < _items.size(); ++i) {
+		if (!_items[i]->IsItemValid()) {
+			_items.erase(_items.begin() + i);
+			if (_selectedItem <= i) {
+				if (_selectedItem > 0) {
+					_selectedItem -= 1;
+				}
+			}
+
+			i -= 1;
+			continue;
+		}
+	}
+}

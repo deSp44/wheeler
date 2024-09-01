@@ -7,6 +7,14 @@ class WheelItem
 {
 public:
 	WheelItem(){};
+
+	/// <summary>
+	/// Check if the item contained is still valid, that is, that it still
+	/// points to a valid game form.
+	/// If not valid it should be disposed of as quickly as possible.
+	/// </summary>
+	virtual bool IsItemValid();
+
 	
 	/// <summary>
 	/// Draw everything that's supposed to be in a wheel slot(entry)
