@@ -397,8 +397,12 @@ namespace RE
 		std::int32_t result = 0;
 
 		auto invChanges = GetInventoryChanges(a_noInit);
-		if (invChanges) {
-			result += invChanges->GetItemCount(item);
+		if (invChanges && invChanges->entryList) {
+			for (auto& entry : *invChanges->entryList) {
+				if (entry && entry->object && entry->object == item) {
+					result += entry->countDelta;
+				}
+			}
 		}
 
 		auto container = GetContainer();
