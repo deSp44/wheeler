@@ -202,8 +202,12 @@ void Wheel::ActivateHoveredEntrySecondary(bool a_editMode)
         return;
     }
 	std::unique_ptr<WheelEntry>& entry = this->_entries[_hoveredEntryIdx];
-	if (entry->IsEmpty()) { // remove the entry if it's empty
-		this->_entries.erase(this->_entries.begin() + _hoveredEntryIdx);
+	if (entry->IsEmpty()) {
+		if (a_editMode) {
+			// remove the entry if it's empty
+			this->_entries.erase(this->_entries.begin() + _hoveredEntryIdx);
+		}
+
 		return;
 	}
 	this->_entries[_hoveredEntryIdx]->ActivateItemSecondary(a_editMode);
