@@ -123,7 +123,7 @@ install(
 	COMPONENT "pdbs"
 )
 
-if("${COPY_OUTPUT}")
+if("${COPY_OUTPUT}" STREQUAL "1")
 	if(NOT DEFINED CompiledPluginsPath)
 		message(FATAL_ERROR "CompiledPluginsPath is not set")
 	endif()
