@@ -11,7 +11,10 @@
 mkdir BUILD
 cd BUILD
 cmake --preset vs2022-windows ..
-cmake --build .
+
+# Pick Debug or Release for --config
+cmake --build . --config Release
+
 ```
 
 # Description
