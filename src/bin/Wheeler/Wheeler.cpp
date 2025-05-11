@@ -228,7 +228,7 @@ void Wheeler::TryCloseWheeler()
 		CloseWheeler();  // close directly
 	} else {
 		// set timescale to 1 prior to closing the wheel to avoid weirdness
-		if (Config::Styling::Wheel::SlowTimeScale <= 1) {
+		if (Config::Styling::Wheel::SlowTimeScale < 1) {
 			if (Utils::Time::GGTM() != 1) {
 				Utils::Time::SGTM(1);
 			}
@@ -301,7 +301,7 @@ void Wheeler::CloseWheeler()
 		return;
 	}
 	if (_state != WheelState::KClosed) {
-		if (Config::Styling::Wheel::SlowTimeScale <= 1) {
+		if (Config::Styling::Wheel::SlowTimeScale < 1) {
 			if (Utils::Time::GGTM() != 1) {
 				Utils::Time::SGTM(1);
 			}
