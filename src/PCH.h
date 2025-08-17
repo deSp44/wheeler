@@ -58,3 +58,15 @@ struct DrawArgs
 	bool centerObject = true;
 };
 
+#define INFO(...) logger::info(__VA_ARGS__)
+#define ERROR(...) logger::critical(__VA_ARGS__)
+#define DEBUG(...) logger::debug(__VA_ARGS__)
+#define ASSERT(CONDITION)                                     \
+	if (CONDITION) {                                          \
+	} else {                                                  \
+		logger::critical("assertion {} failed.", #CONDITION); \
+	}
+
+// Remove clashing Windows #defines
+#undef GetObject
+#undef PlaySound

@@ -167,6 +167,8 @@ void Config::ReadControlConfig()
 	GetUInt32Value(ini, "InputBindings.MKB", "moveEntryBack", Config::InputBindings::MKB::moveEntryBack);
 	GetUInt32Value(ini, "InputBindings.MKB", "moveWheelForward", Config::InputBindings::MKB::moveWheelForward);
 	GetUInt32Value(ini, "InputBindings.MKB", "moveWheelBack", Config::InputBindings::MKB::moveWheelBack);
+	GetUInt32Value(ini, "InputBindings.MKB", "toggleWheelIfInInventory", Config::InputBindings::MKB::toggleWheelIfInInventory);
+	GetUInt32Value(ini, "InputBindings.MKB", "toggleWheelIfNotInInventory", Config::InputBindings::MKB::toggleWheelIfNotInInventory);
 
 	GetFloatValue(ini, "Control.Wheel", "CursorRadiusPerEntry", Config::Control::Wheel::CursorRadiusPerEntry);
 	GetBoolValue(ini, "Control.Wheel", "DoubleActivateDisable", Config::Control::Wheel::DoubleActivateDisable);

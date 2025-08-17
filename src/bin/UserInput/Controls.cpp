@@ -27,12 +27,16 @@ void Controls::BindAllInputsFromConfig()
 				 { nextWheel, &Wheeler::NextWheel },
 				 { prevWheel, &Wheeler::PrevWheel },
 				 { toggleWheel, &Wheeler::ToggleWheeler },
+				 { toggleWheelIfNotInInventory, &Wheeler::ToggleWheelIfNotInInventory },
+				 { toggleWheelIfInInventory, &Wheeler::ToggleWheelIfInInventory },
 				 { prevItem, &Wheeler::PrevItemInEntry },
 				 { nextItem, &Wheeler::NextItemInEntry }
 			}) {
 			bindInput(mapping.first, mapping.second, true, false);
 		}
 		bindInput(toggleWheel, &Wheeler::CloseWheelerIfOpenedLongEnough, false, false);
+		bindInput(toggleWheelIfInInventory, &Wheeler::CloseWheelerIfOpenedLongEnoughIfInInventory, false, false);
+		bindInput(toggleWheelIfNotInInventory, &Wheeler::CloseWheelerIfOpenedLongEnoughIfNotInInventory, false, false);
 	}
 	{
 		using namespace GamePad;

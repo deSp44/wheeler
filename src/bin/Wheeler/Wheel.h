@@ -48,6 +48,8 @@ public:
 	
 	int GetNumEntries();
 
+	void RemoveInvalidItems();
+
 private:
     std::vector<std::unique_ptr<WheelEntry>> _entries = {};
 	std::shared_mutex _lock;

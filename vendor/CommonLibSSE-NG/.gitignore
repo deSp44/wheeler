@@ -1,0 +1,19 @@
+# dot folders
+.idea/
+.vs*/
+.xmake/
+
+# folders
+/build*
+/out*
+/vs*
+
+# files
+*.zip
+CMakeUserPresets.json
+CMakeFiles
+CMakeCache.txt
+conan.lock
+conanbuildinfo.*
+conaninfo.txt
+graph_info.json

@@ -58,8 +58,17 @@ WheelItemAlchemy::WheelItemAlchemy(RE::AlchemyItem* a_alchemyItem)
 			iconType = Texture::icon_image_type::potion_default;
 		}
 	}
+	this->_formID = _alchemyItem->formID;
 	this->_texture = Texture::GetIconImage(iconType, this->_alchemyItem);
 	Utils::Magic::GetMagicItemDescription(_alchemyItem, this->_description);
+}
+
+bool WheelItemAlchemy::IsItemValid()
+{
+	RE::TESForm* form = RE::TESForm::LookupByID(_formID);
+	if (form == nullptr) return false;
+	auto alchemyItemWithId = static_cast<RE::AlchemyItem*>(form);
+	return (alchemyItemWithId == _alchemyItem);
 }
 
 void WheelItemAlchemy::DrawSlot(ImVec2 a_center, bool a_hovered, RE::TESObjectREFR::InventoryItemMap& a_imap, DrawArgs a_drawArgs)
@@ -174,8 +183,7 @@ void WheelItemAlchemy::consume()
 	RE::PlayerCharacter* pc = RE::PlayerCharacter::GetSingleton();
 	if (!pc) {
 		return;
-	} 
-	
+		
 	/*修复了自制药剂消耗后CTD的问题，所以也不需要检查数量了
 	if (this->_alchemyItem->IsDynamicForm() && pc->GetItemCount(this->_alchemyItem) <= 1) {
 		Utils::NotificationMessage(Texts::GetText(Texts::TextType::AlchemyDynamicIDConsumptionWarning));

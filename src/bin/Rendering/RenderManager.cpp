@@ -47,16 +47,16 @@ void RenderManager::D3DInitHook::thunk()
 	func();
 
 	INFO("RenderManager: Initializing...");
-	auto render_manager = RE::BSRenderManager::GetSingleton();
+	auto render_manager = RE::BSGraphics::Renderer::GetSingleton();
 	if (!render_manager) {
 		ERROR("Cannot find render manager. Initialization failed!");
 		return;
 	}
 
-	auto render_data = render_manager->GetRuntimeData();
+	auto render_data = RE::BSGraphics::Renderer::GetRendererData();
 
 	INFO("Getting swapchain...");
-	auto swapchain = render_data.swapChain;
+	auto swapchain = render_data->renderWindows[0].swapChain;
 	if (!swapchain) {
 		ERROR("Cannot find swapchain. Initialization failed!");
 		return;
@@ -64,14 +64,14 @@ void RenderManager::D3DInitHook::thunk()
 
 	INFO("Getting swapchain desc...");
 	DXGI_SWAP_CHAIN_DESC sd{};
-	if (swapchain->GetDesc(std::addressof(sd)) < 0) {
+	if (swapchain->GetDesc((REX::W32::DXGI_SWAP_CHAIN_DESC*) &sd) < 0) {
 		ERROR("IDXGISwapChain::GetDesc failed.");
 		return;
 	}
 
-	device = render_data.forwarder;
+	device = (ID3D11Device*) render_data->forwarder;
 	Texture::device_ = device;
-	context = render_data.context;
+	context = (ID3D11DeviceContext*) render_data->context;
 
 	INFO("Initializing ImGui...");
 	ImGui::CreateContext();

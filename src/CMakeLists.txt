@@ -85,14 +85,13 @@ target_include_directories(
 
 set(SKSE_SUPPORT_XBYAK ON)
 
-add_subdirectory("$ENV{CommonLibSSEPath_NG}" CommonLibSSE EXCLUDE_FROM_ALL)
+add_subdirectory("../vendor/CommonLibSSE-NG" CommonLibSSE EXCLUDE_FROM_ALL)
 
 find_package(xbyak REQUIRED CONFIG)
 
 find_package(imgui REQUIRED)
 
 find_package(Freetype REQUIRED)
-
 
 
 target_link_libraries(
@@ -124,7 +123,11 @@ install(
 	COMPONENT "pdbs"
 )
 
-if("${COPY_OUTPUT}")
+if("${COPY_OUTPUT}" STREQUAL "1")
+	if(NOT DEFINED CompiledPluginsPath)
+		message(FATAL_ERROR "CompiledPluginsPath is not set")
+	endif()
+
 	add_custom_command(
 		TARGET "${PROJECT_NAME}"
 		POST_BUILD

@@ -144,9 +144,17 @@ void Input::ProcessAndFilter(RE::InputEvent** a_event)
 					}
 				}
 				if (isKeyBound) {
+					bool wheelerOpenBefore = wheelerOpen;
+
 					if (button->IsDown() || button->IsUp()) {
 						// dispatch no matter if wheeler is open, wheeler will handle dispatched logic.
 						Controls::Dispatch(input, button->IsDown(), isGamePad);
+					}
+
+					bool wheelerOpenAfter = Wheeler::IsWheelerOpen();
+
+					if (wheelerOpenBefore != wheelerOpenAfter) {
+						shouldDispatch = false;
 					}
 				}
 			}

@@ -1,5 +1,24 @@
 # Wheeler
 
+# Building
+
+- Install vcpkg as described in its instructions and add it to your PATH so it works on CMake.
+- Install CMake.
+- Install Visual Studio 2022.
+- Run the following:
+
+```
+mkdir BUILD
+cd BUILD
+cmake --preset vs2022-windows ..
+
+# Pick Debug or Release for --config
+cmake --build . --config Release
+
+```
+
+# Description
+
 Most, if not all modern RPG games have some sort of wheel menu for quick actions. GTA5's wheel allows the player to quickly browse their military arsenal, Witcher's wheel allows to switch between magic signs and consumables, and Bethesda's own title, Fallout4, has a wheel for favorited item access. This mod aims to integrate this modern UI paradigm into Skyrim, and hopefully make its players' life easier.
 
 # The wheel

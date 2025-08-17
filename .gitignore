@@ -1,4 +1,6 @@
-build
+/BUILD
+/_BUILD
 src/bin/_empty.cpp
 src/bin/_empty.h
 .vscode/settings.json
+/.idea

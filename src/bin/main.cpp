@@ -130,8 +130,8 @@ extern "C" DLLEXPORT constinit auto SKSEPlugin_Version = []() {
 
 extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_skse)
 {
-	REL::Module::reset();  // Clib-NG bug workaround
-	//std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+	// REL::Module::reset();  // Clib-NG bug workaround
+	
 	InitializeLog();
 	logger::info("{} v{}"sv, Plugin::NAME, Plugin::VERSION.string());
 

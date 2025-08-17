@@ -175,7 +175,7 @@ namespace Utils
 			bool lhsEquipped = false, rhsEquipped = false;
 			bool lhsEquippedBase = false, rhsEquippedBase = false;
 			RE::InventoryEntryData* lhs = a_actor->GetEquippedEntryData(true);
-
+			
 			#undef GetObject
 			if (lhs && lhs->GetObject() && lhs->GetObject()->GetFormID() == a_weapon->GetFormID()) {
 				if (lhs->extraLists) {
