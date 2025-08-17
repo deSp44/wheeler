@@ -183,7 +183,8 @@ void WheelItemAlchemy::consume()
 	RE::PlayerCharacter* pc = RE::PlayerCharacter::GetSingleton();
 	if (!pc) {
 		return;
-		
+	} 
+	
 	/*修复了自制药剂消耗后CTD的问题，所以也不需要检查数量了
 	if (this->_alchemyItem->IsDynamicForm() && pc->GetItemCount(this->_alchemyItem) <= 1) {
 		Utils::NotificationMessage(Texts::GetText(Texts::TextType::AlchemyDynamicIDConsumptionWarning));
